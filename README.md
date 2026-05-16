@@ -110,7 +110,7 @@ Requisitos
 Instalacion
 
 # Clonar el repositorio
-git clone https://github.com/usuario/repositorio.git
+git clone https://github.com/usuario/repositorio.git](https://github.com/BraulioTelloMancilla/Teoria-de-Lenguajes-de-Programaci-n)
 
 # Entrar al directorio del proyecto
 cd motor-inferencia
