@@ -71,3 +71,35 @@ Content-Type: application/json
 {
   "query": "penalty_applicable(contract1)."
 }
+```
+### Response
+```http
+{
+  "success": true,
+  "result": "true."
+}
+```
+## ⚙️ Requisitos
+
+- Node.js v18 o superior
+- npm v9 o superior
+
+---
+
+## 📦 Instalación
+
+```bash
+git clone https://github.com/usuario/repositorio.git
+cd motor-inferencia
+npm install
+```
+## Ejecución:
+npm start
+
+## Ejemplo de conocimiento
+contract(contract1).
+breach(contract1).
+
+penalty_applicable(X) :-
+    contract(X),
+    breach(X).
