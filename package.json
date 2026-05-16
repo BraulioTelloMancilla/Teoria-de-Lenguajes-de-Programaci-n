@@ -1,0 +1,16 @@
+{
+  "name": "motor-inferencia",
+  "version": "1.0.0",
+  "description": "Motor de inferencia lógica como servicio REST usando Tau Prolog y Node.js",
+  "main": "src/app.js",
+  "scripts": {
+    "start": "node src/app.js"
+  },
+  "keywords": ["prolog", "inferencia", "nodejs", "express", "tau-prolog"],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.18.2",
+    "tau-prolog": "^0.3.2"
+  }
+}
