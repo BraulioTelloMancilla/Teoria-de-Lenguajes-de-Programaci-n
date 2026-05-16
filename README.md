@@ -1,57 +1,43 @@
 # Motor de Inferencia Lógica como Servicio
 
-Servicio web que expone un motor de inferencia simbólica basado en lógica declarativa (Prolog) a través de una API REST desarrollada con Node.js y Express.
+Servicio web que expone un motor de inferencia simbólica basado en lógica declarativa (Prolog) a través de una API REST desarrollada con Node.js y Express. Permite ejecutar consultas lógicas sobre una base de conocimiento y obtener resultados derivados automáticamente mediante reglas.
 
-Permite ejecutar consultas lógicas sobre una base de conocimiento y obtener resultados derivados automáticamente mediante reglas.
+## Descripción
 
-## Descripcion
+Este sistema actúa como un motor de inferencia simbólica donde el usuario puede enviar consultas lógicas y recibir resultados inferidos a partir de hechos y reglas definidos en Prolog. El proyecto integra tres paradigmas de programación fundamentales:
 
-El sistema actua como un motor de inferencia simbolica, donde el usuario puede enviar consultas logicas y recibir resultados inferidos a partir de hechos y reglas definidos en Prolog.
-
-Integra distintos paradigmas de programacion:
-
-| Paradigma | Tecnologia | Rol en el Sistema |
-|-----------|------------|-------------------|
-| Programacion Logica | Prolog | Define hechos y reglas para la inferencia |
-| Programacion Funcional | JavaScript | Transformacion y normalizacion de datos |
-| Programacion Asincrona | Node.js | Manejo de multiples solicitudes concurrentes |
+La programación lógica se implementa mediante Prolog, que define los hechos y reglas para la inferencia. La programación funcional se utiliza en JavaScript para la transformación y normalización de datos. La programación asíncrona, propia del modelo de ejecución de Node.js, maneja múltiples solicitudes concurrentes de manera eficiente.
 
 ## Objetivo
 
-Desarrollar un sistema que demuestre la interaccion entre diferentes paradigmas de programacion:
+Desarrollar un sistema que demuestre la interacción entre diferentes paradigmas de programación:
 
-- **Programacion logica (Prolog)**: Representacion del conocimiento y reglas de inferencia
-- **Programacion funcional (JavaScript)**: Procesamiento de entradas y salidas de datos
-- **Programacion asincrona (Node.js)**: Manejo eficiente de solicitudes HTTP concurrentes
+- Programación lógica (Prolog): Representación del conocimiento y reglas de inferencia
+- Programación funcional (JavaScript): Procesamiento de entradas y salidas de datos
+- Programación asíncrona (Node.js): Manejo eficiente de solicitudes HTTP concurrentes
 
-El sistema permite evaluar consultas sobre una base de conocimiento y retornar resultados inferidos de forma automatica.
+El sistema permite evaluar consultas sobre una base de conocimiento y retornar resultados inferidos de forma automática.
 
-## Arquitectura
+## Arquitectura del Sistema
 
-El sistema esta compuesto por los siguientes componentes:
+El sistema se compone de cuatro capas principales:
 
-+-------------+ +--------------+ +-----------------+ | Cliente |---->| Servidor |---->| Motor Prolog | | (HTTP) | | (Express.js) | | (Tau Prolog) | +-------------+ +--------------+ +-----------------+ | v +--------------+ | Base de | | Conocimiento | | (.pl) | +--------------+
+El servidor HTTP, desarrollado con Express.js, expone el endpoint `/query` y recibe las consultas en formato Prolog. El motor de inferencia lógica, implementado con la biblioteca Tau Prolog, ejecuta las consultas sobre la base de conocimiento. La base de conocimiento es un archivo `.pl` que contiene los hechos y reglas definidos en Prolog. Finalmente, la capa asíncrona utiliza async/await y Promises para manejar múltiples solicitudes simultáneas.
 
-Componentes
-Componente	Tecnologia	Funcion
-Servidor HTTP	Express.js	Expone el endpoint /query y recibe consultas en formato Prolog
-Motor de inferencia logica	Tau Prolog	Ejecuta consultas sobre la base de conocimiento
-Base de conocimiento	Archivo .pl	Contiene hechos y reglas definidos en Prolog
-Capa asincrona	async/await + Promises	Maneja multiples solicitudes simultaneas
-Flujo de ejecucion
+## Flujo de Ejecución
 
-    El cliente envia una consulta logica (ej: penalty_applicable(contract1).)
-    El servidor recibe y valida la entrada
-    Se carga la base de conocimiento
-    El motor Prolog ejecuta la consulta
-    Se realiza la inferencia basada en reglas
-    El resultado se retorna como JSON
+1. El cliente envía una consulta lógica (por ejemplo: `penalty_applicable(contract1).`)
+2. El servidor recibe y valida la entrada
+3. Se carga la base de conocimiento
+4. El motor Prolog ejecuta la consulta
+5. Se realiza la inferencia basada en reglas
+6. El resultado se retorna como JSON
 
-Ejemplos de uso
-Consulta basica
+## Ejemplos de Uso
+
+### Consulta básica
 
 Request:
-
 POST /query
 Content-Type: application/json
 
@@ -107,10 +93,10 @@ Requisitos
     Node.js v18 o superior
     npm v9 o superior
 
-Instalacion
+Instalación
 
 # Clonar el repositorio
-git clone https://github.com/usuario/repositorio.git](https://github.com/BraulioTelloMancilla/Teoria-de-Lenguajes-de-Programaci-n)
+git clone https://github.com/usuario/repositorio.git
 
 # Entrar al directorio del proyecto
 cd motor-inferencia
@@ -118,14 +104,14 @@ cd motor-inferencia
 # Instalar dependencias
 npm install
 
-Ejecucion
+Ejecución
 
 # Iniciar el servidor
 npm start
 
-# El servidor estara disponible en http://localhost:3000
+# El servidor estará disponible en http://localhost:3000
 
-Base de conocimiento de ejemplo
+Base de Conocimiento de Ejemplo
 
 Archivo knowledge.pl:
 
