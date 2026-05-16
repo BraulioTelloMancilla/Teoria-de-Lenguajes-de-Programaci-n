@@ -7,20 +7,19 @@ const knowledgeBasePath = path.join(__dirname, 'knowledgeBase.pl');
 
 function loadKnowledgeBase(session) {
   const kb = fs.readFileSync(knowledgeBasePath, 'utf8');
-  session.consult(kb, {
-    success: () => {},
-    error: (err) => { throw new Error('Error cargando la base de conocimiento: ' + err); }
+  console.log("Contenido de knowledgeBase.pl:", kb);
+  return new Promise((resolve, reject) => {
+    session.consult(kb, {
+      success: () => resolve(),
+      error: (err) => reject(new Error('Error cargando la base de conocimiento: ' + err))
+    });
   });
 }
 
-exports.runPrologQuery = (query) => {
+exports.runPrologQuery = async (query) => {
+  const session = pl.create(1000);
+  await loadKnowledgeBase(session);
   return new Promise((resolve, reject) => {
-    const session = pl.create(1000);
-    try {
-      loadKnowledgeBase(session);
-    } catch (e) {
-      return reject(e);
-    }
     session.query(query, {
       success: () => {
         session.answer({
